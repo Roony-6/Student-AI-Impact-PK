@@ -55,3 +55,17 @@ def impacto_por_proposito(df, proposito):
     # Calculamos la frecuencia relativa (porcentajes)
     impacto = df_filtrado['Impact_on_Grades'].value_counts(normalize=True) * 100
     return impacto
+
+# ----- ANOMALIAS Y DEMOGRAFIA -----
+
+def obtener_anomalias(df: pd.DataFrame, min_hours_usage, max_hours_usage):
+    ''''Obtener df nivel de satisfaccion alto pero con notas en declive'''
+    filtro_anomalias = ((df["Satisfaction_Level"] == "High") & (df["Impact_on_Grades"] == "Slight Decline")
+                        & (df["Daily_Usage_Hours"] >= min_hours_usage) & (df["Daily_Usage_Hours"] <= max_hours_usage))
+    return df[filtro_anomalias]
+
+def obtener_distribucion_genero(df: pd.DataFrame):
+    return df['Gender'].value_counts()
+
+def obtener_distribucion_nivel_educativo(df: pd.DataFrame):
+    return df['Education_Level'].value_counts()
