@@ -1,7 +1,7 @@
 # Student-AI-Impact-PK
-
-```Student AI Impact Pakistan es un dashboard interactivo que analiza la adopción y el impacto de las herramientas de IA  en el rendimiento académico y la vida diaria de estudiantes en Pakistán durante el 2026.```
 ---
+
+Student AI Impact Pakistan es un dashboard interactivo que analiza la adopción y el impacto de las herramientas de IA  en el rendimiento académico y la vida diaria de estudiantes en Pakistán durante el 2026.
 
 ## Objetivos del Análisis
 - Identificar qué herramientas de IA tienen mayor correlación con la mejora de notas.
