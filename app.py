@@ -4,6 +4,7 @@ from utils import data_processor as dp
 from components import charts as ch
 from components import tab_impacto
 from components import tab_anomalias
+from components import tab_regiones_insights
 # Configuración inicial
 st.set_page_config(page_title="Student AI Impact PK", page_icon="🎓", layout="wide")
 st.title("🎓 Impacto de la Inteligencia Artificial en Estudiantes PK")
@@ -18,4 +19,4 @@ with tab1:
 with tab2:
     tab_anomalias.render_tab_anomalias(df)
 with tab3:
-    st.markdown("Proximamente")
+    tab_regiones_insights.render_tab_regiones_insights(df)
