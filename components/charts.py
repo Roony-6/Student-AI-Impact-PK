@@ -34,3 +34,26 @@ def grafico_demografia_horas(df, desglosar_genero, desglosar_educacion):
             title="Distribución General de Horas de Uso Diario"
         )
     st.plotly_chart(fig)
+    
+    
+    
+def grafico_comparativa_ciudades(df_rendimiento):
+    """
+    Renderiza un gráfico de barras comparando el porcentaje de mejora entre ciudades.
+    """
+    fig = px.bar(
+        df_rendimiento,
+        x='City',
+        y='Improved',
+        title="Porcentaje de Notas Mejoradas por Ciudad",
+        color='City',
+        text_auto='.1f' # Muestra el valor exacto sobre la barra con un decimal
+    )
+    
+    fig.update_layout(
+        yaxis_title="Porcentaje (%)", 
+        xaxis_title="Ciudad", 
+        showlegend=False
+    )
+    
+    st.plotly_chart(fig, use_container_width=True)
