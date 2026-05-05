@@ -69,3 +69,28 @@ def obtener_distribucion_genero(df: pd.DataFrame):
 
 def obtener_distribucion_nivel_educativo(df: pd.DataFrame):
     return df['Education_Level'].value_counts()
+
+
+# ---- INSIGHTS -----
+
+def rendimiento_mejorado_por_ciudades(df, lista_ciudades):
+    """
+    Filtra por ciudades y calcula el porcentaje de estudiantes 
+    con impacto 'Improved' en sus notas.
+    """
+    df_filtrado = df[df['City'].isin(lista_ciudades)]
+    
+    if df_filtrado.empty:
+        return pd.DataFrame(columns=['City', 'Improved'])
+        
+    # Calculamos el porcentaje
+    df_distribuciones = df_filtrado.groupby("City")["Impact_on_Grades"].value_counts(normalize=True).unstack() * 100
+    
+    
+   # Si existe la columna 'Improved', la extraemos. Si no, devolvemos 0.
+    if 'Improved' in df_distribuciones.columns:
+        resumen = df_distribuciones[['Improved']].reset_index()
+    else:
+        resumen = pd.DataFrame({'City': lista_ciudades, 'Improved': 0})
+        
+    return resumen.sort_values(by='Improved', ascending=False)
